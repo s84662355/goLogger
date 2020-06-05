@@ -63,11 +63,42 @@ func init() {
 	fatalLevel = zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
 		return  lvl == zapcore.FatalLevel
 	})
-
 }
 
-func Logger(filepath string ,  isDay bool)  *zap.Logger{
+type Log struct {
+    loger *zap.Logger
+}
 
+func (l *Log) Info(msg string){
+    l.loger.Info(msg)
+}
+
+func (l *Log) Warn(msg string){
+    l.loger.Warn(msg)
+}
+
+func (l *Log) Error(msg string){
+    l.loger.Error(msg)
+}
+
+func (l *Log) Debug(msg string){
+    l.loger.Debug(msg)
+}
+
+func (l *Log) DPanic(msg string){
+    l.loger.DPanic(msg)
+}
+
+func (l *Log) Panic(msg string){
+    l.loger.Panic(msg)
+}
+
+func (l *Log) Fatal(msg string){
+    l.loger.Fatal(msg)
+}
+
+
+func Logger(filepath string ,  isDay bool)  *Log{
 
 	// 获取 info、warn日志文件的io.Writer 抽象 getWriter() 在下方实现
 	infoWriter := getWriter(filepath+"/info", isDay)
@@ -90,9 +121,10 @@ func Logger(filepath string ,  isDay bool)  *zap.Logger{
 		zapcore.NewCore(encoder, zapcore.AddSync( fatalWriter ), fatalLevel),
 	)
 
-	logger := zap.New(core, zap.AddCaller())
+	loger := new(Log)
+    loger.loger = zap.New(core, zap.AddCaller())
 
-	return logger
+	return loger
 }
 
 func getWriter(filename string , isDay bool) io.Writer {

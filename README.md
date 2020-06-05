@@ -19,10 +19,10 @@ import (
 - 返回 *zap.Logger
 
 ##按日分割
-log := goLogger.Logger("/Users/chenjiahao/GoDemo",true) *zap.Logger
+log := goLogger.Logger("/Users/chenjiahao/GoDemo",true) *goLogger.Log 
 
 ##按小时分割
-log := goLogger.Logger("/Users/chenjiahao/GoDemo",false) *zap.Logger
+log := goLogger.Logger("/Users/chenjiahao/GoDemo",false) *goLogger.Log 
 
  
 - log.Info(msg string)
