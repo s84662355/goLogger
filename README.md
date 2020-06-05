@@ -14,9 +14,9 @@ import (
 )
 
 ##goLogger.Logger
-第一个参数是存放日志的目录
-第二个参数确定是按日分割还是按小时分割
-返回 *zap.Logger
+- 第一个参数是存放日志的目录
+- 第二个参数确定是按日分割还是按小时分割
+- 返回 *zap.Logger
 
 ##按日分割
 log := goLogger.Logger("/Users/chenjiahao/GoDemo",true) *zap.Logger
@@ -24,13 +24,14 @@ log := goLogger.Logger("/Users/chenjiahao/GoDemo",true) *zap.Logger
 ##按小时分割
 log := goLogger.Logger("/Users/chenjiahao/GoDemo",false) *zap.Logger
 
-log.Info(msg string)
-log.Warn(msg string)
-log.Error(msg string)
-log.Debug(msg string)
-log.DPanic(msg string)
-log.Panic(msg string)
-log.Fatal(msg string)
+ 
+- log.Info(msg string)
+- log.Warn(msg string)
+- log.Error(msg string)
+- log.Debug(msg string)
+- log.DPanic(msg string)
+- log.Panic(msg string)
+- log.Fatal(msg string)
 
 
 ##格式如下
